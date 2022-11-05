@@ -45,7 +45,7 @@ public class EmpController {
         return  "edit";
     }
 
-    @PostMapping
+    @PostMapping("/update")
     public String updateEmployee(@ModelAttribute Employee employee, HttpSession session){
         employeeService.addEmployee(employee);
         session.setAttribute("msg","Employee Details Edited Successfully..!");
@@ -53,7 +53,7 @@ public class EmpController {
         return "redirect:/home";
     }
 
-    @DeleteMapping("/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String delete(@PathVariable int id,  HttpSession session){
         employeeService.deleteEmployee(id);
         session.setAttribute("msg","Employee Deleted Successfully..!");
